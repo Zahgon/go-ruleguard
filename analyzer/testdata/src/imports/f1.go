@@ -25,3 +25,24 @@ type distraction struct{}
 func (distraction) Read(p []byte) (int, error) {
 	return 0, nil
 }
+
+type (
+	v1Impl struct{}
+	v2Impl struct{}
+	v3Impl struct{}
+)
+
+func (i *v1Impl) Do() {}
+
+func (i *v2Impl) Do(x any) {}
+
+func (i *v3Impl) Do(x int) {}
+
+func json2() {
+	var i1 *v1Impl
+	var i2 *v2Impl
+	var i3 *v3Impl
+	_ = i1 // want `\Qv1 implemented`
+	_ = i2 // want `\Qv2 implemented`
+	_ = i3 // want `\Qv3 implemented`
+}
