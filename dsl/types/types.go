@@ -3,12 +3,20 @@
 package types
 
 // Implements reports whether a given type implements the specified interface.
-func Implements(typ Type, iface *Interface) bool { return false }
+func Implements(typ Type, iface *Interface) bool {
+	_ = "STUB: not implemented"
 
-// Identical reports whether x and y are identical types. Receivers of Signature types are ignored.
-func Identical(x, y Type) bool { return false }
+	// Identical reports whether x and y are identical types. Receivers of Signature types are ignored.
+	return false
+}
 
-// A Type represents a type of Go. All types implement the Type interface.
+func Identical(x, y Type) bool {
+	_ = "STUB: not implemented"
+
+	// A Type represents a type of Go. All types implement the Type interface.
+	return false
+}
+
 type Type interface {
 	// Underlying returns the underlying type of a type.
 	Underlying() Type
@@ -36,33 +44,57 @@ type (
 
 // NewArray returns a new array type for the given element type and length.
 // A negative length indicates an unknown length.
-func NewArray(elem Type, len int) *Array { return nil }
+func NewArray(elem Type, len int) *Array {
+	_ = "STUB: not implemented"
 
-// Elem returns element type of array.
-func (*Array) Elem() Type { return nil }
+	// Elem returns element type of array.
+	return nil
+}
 
-// NewSlice returns a new slice type for the given element type.
-func NewSlice(elem Type) *Slice { return nil }
+func (*Array) Elem() Type {
+	_ = "STUB: not implemented"
 
-// Elem returns element type of slice.
-func (*Slice) Elem() Type { return nil }
+	// NewSlice returns a new slice type for the given element type.
+	return *new(Type)
+}
 
-// Len returns the length of array.
-// A negative result indicates an unknown length.
-func (*Array) Len() int { return 0 }
+func NewSlice(elem Type) *Slice {
+	_ = "STUB: not implemented"
 
-// NewPointer returns a new pointer type for the given element (base) type.
-func NewPointer(elem Type) *Pointer { return nil }
+	// Elem returns element type of slice.
+	return nil
+}
 
-// Elem returns the element type for the given pointer.
-func (*Pointer) Elem() Type { return nil }
+func (*Slice) Elem() Type {
+	_ = "STUB: not implemented"
 
-func (*Struct) NumFields() int { return 0 }
+	// Len returns the length of array.
+	// A negative result indicates an unknown length.
+	return *new(Type)
+}
 
-func (*Struct) Field(i int) *Var { return nil }
+func (*Array) Len() int {
+	_ = "STUB: not implemented"
+
+	// NewPointer returns a new pointer type for the given element (base) type.
+	return 0
+}
+
+func NewPointer(elem Type) *Pointer {
+	_ = "STUB: not implemented"
+
+	// Elem returns the element type for the given pointer.
+	return nil
+}
+
+func (*Pointer) Elem() Type { _ = "STUB: not implemented"; return *new(Type) }
+
+func (*Struct) NumFields() int { _ = "STUB: not implemented"; return 0 }
+
+func (*Struct) Field(i int) *Var { _ = "STUB: not implemented"; return nil }
 
 type Var struct{}
 
-func (*Var) Embedded() bool { return false }
+func (*Var) Embedded() bool { _ = "STUB: not implemented"; return false }
 
-func (*Var) Type() Type { return nil }
+func (*Var) Type() Type { _ = "STUB: not implemented"; return *new(Type) }

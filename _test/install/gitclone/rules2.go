@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package gorules
@@ -11,8 +12,4 @@ func init() {
 	dsl.ImportRules("testrules", testrules.Bundle)
 }
 
-func exprUnparen(m dsl.Matcher) {
-	m.Match(`$f($*_, ($x), $*_)`).
-		Report(`the parentheses around $x are superfluous`).
-		Suggest(`$f($x)`)
-}
+func exprUnparen(m dsl.Matcher) { _ = "STUB: not implemented"; return }

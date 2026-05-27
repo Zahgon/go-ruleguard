@@ -1,10 +1,5 @@
 package ir
 
-import (
-	"fmt"
-	"strings"
-)
-
 type File struct {
 	PkgPath string
 
@@ -68,7 +63,7 @@ type PatternString struct {
 //go:generate go run ./gen_filter_op.go
 type FilterOp int
 
-func (op FilterOp) String() string { return filterOpNames[op] }
+func (op FilterOp) String() string { _ = "STUB: not implemented"; return "" }
 
 type FilterExpr struct {
 	Line int
@@ -79,32 +74,13 @@ type FilterExpr struct {
 	Args  []FilterExpr
 }
 
-func (e FilterExpr) IsValid() bool { return e.Op != FilterInvalidOp }
+func (e FilterExpr) IsValid() bool { _ = "STUB: not implemented"; return false }
 
-func (e FilterExpr) IsBinaryExpr() bool { return filterOpFlags[e.Op]&flagIsBinaryExpr != 0 }
-func (e FilterExpr) IsBasicLit() bool   { return filterOpFlags[e.Op]&flagIsBasicLit != 0 }
-func (e FilterExpr) HasVar() bool       { return filterOpFlags[e.Op]&flagHasVar != 0 }
+func (e FilterExpr) IsBinaryExpr() bool { _ = "STUB: not implemented"; return false }
+func (e FilterExpr) IsBasicLit() bool   { _ = "STUB: not implemented"; return false }
+func (e FilterExpr) HasVar() bool       { _ = "STUB: not implemented"; return false }
 
-func (e FilterExpr) String() string {
-	switch e.Op {
-	case FilterStringOp:
-		return `"` + e.Value.(string) + `"`
-	case FilterIntOp:
-		return fmt.Sprint(e.Value.(int64))
-	}
-	parts := make([]string, 0, len(e.Args)+2)
-	parts = append(parts, e.Op.String())
-	if e.Value != nil {
-		parts = append(parts, fmt.Sprintf("[%#v]", e.Value))
-	}
-	for _, arg := range e.Args {
-		parts = append(parts, arg.String())
-	}
-	if len(parts) == 1 {
-		return parts[0]
-	}
-	return "(" + strings.Join(parts, " ") + ")"
-}
+func (e FilterExpr) String() string { _ = "STUB: not implemented"; return "" }
 
 const (
 	flagIsBinaryExpr uint64 = 1 << iota

@@ -1,27 +1,9 @@
 package target
 
-import "fmt"
+func add(x, y int) int { _ = "STUB: not implemented"; return 0 }
 
-func add(x, y int) int {
-	return x + y
-}
-
-func test(b bool) {
-	println(add((1), 2))
-	println(add(1, (2)))
-
-	println(b == true)
-	println(!!b)
-
-	var foo Foo
-	fooptr := &Foo{}
-
-	println(fmt.Sprint(0))
-	println(fmt.Sprint(foo))
-	println(fmt.Sprint(fooptr))
-	println(fmt.Sprint(&foo))
-}
+func test(b bool) { _ = "STUB: not implemented"; return }
 
 type Foo struct{}
 
-func (Foo) String() string { return "Foo" }
+func (Foo) String() string { _ = "STUB: not implemented"; return "" }

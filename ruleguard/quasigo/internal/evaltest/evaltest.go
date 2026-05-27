@@ -6,4 +6,4 @@ type Foo struct {
 	Prefix string
 }
 
-func (*Foo) Method1(x int) string { return "" }
+func (*Foo) Method1(x int) string { _ = "STUB: not implemented"; return "" }

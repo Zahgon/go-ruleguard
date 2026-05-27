@@ -1,7 +1,5 @@
 package textmatch
 
-import "regexp"
-
 // Pattern is a compiled regular expression.
 type Pattern interface {
 	MatchString(s string) bool
@@ -15,12 +13,11 @@ type Pattern interface {
 // it does recognize some common patterns and creates
 // a more optimized matcher for them.
 func Compile(re string) (Pattern, error) {
-	return compile(re)
+	_ = "STUB: not implemented"
+
+	// IsRegexp reports whether p is implemented using regexp.
+	// False means that the underlying matcher is something optimized.
+	return *new(Pattern), nil
 }
 
-// IsRegexp reports whether p is implemented using regexp.
-// False means that the underlying matcher is something optimized.
-func IsRegexp(p Pattern) bool {
-	_, ok := p.(*regexp.Regexp)
-	return ok
-}
+func IsRegexp(p Pattern) bool { _ = "STUB: not implemented"; return false }

@@ -1,10 +1,6 @@
 package ruleguard
 
 import (
-	"fmt"
-	"go/types"
-
-	"github.com/quasilyte/go-ruleguard/internal/xtypes"
 	"github.com/quasilyte/go-ruleguard/ruleguard/quasigo"
 )
 
@@ -27,37 +23,7 @@ import (
 // as structs with methods. Then we bind a method value to quasigo symbol.
 // The naming scheme is `dsl{$name}Package` for packages and `dsl{$pkg}{$name}` for types.
 
-func initEnv(state *engineState, env *quasigo.Env) {
-	nativeTypes := map[string]quasigoNative{
-		`*github.com/quasilyte/go-ruleguard/dsl.MatchedText`:      dslMatchedText{},
-		`*github.com/quasilyte/go-ruleguard/dsl.DoVar`:            dslDoVar{},
-		`*github.com/quasilyte/go-ruleguard/dsl.DoContext`:        dslDoContext{},
-		`*github.com/quasilyte/go-ruleguard/dsl.VarFilterContext`: dslVarFilterContext{state: state},
-		`github.com/quasilyte/go-ruleguard/dsl/types.Type`:        dslTypesType{},
-		`*github.com/quasilyte/go-ruleguard/dsl/types.Interface`:  dslTypesInterface{},
-		`*github.com/quasilyte/go-ruleguard/dsl/types.Pointer`:    dslTypesPointer{},
-		`*github.com/quasilyte/go-ruleguard/dsl/types.Struct`:     dslTypesStruct{},
-		`*github.com/quasilyte/go-ruleguard/dsl/types.Array`:      dslTypesArray{},
-		`*github.com/quasilyte/go-ruleguard/dsl/types.Slice`:      dslTypesSlice{},
-		`*github.com/quasilyte/go-ruleguard/dsl/types.Var`:        dslTypesVar{},
-	}
-
-	for qualifier, typ := range nativeTypes {
-		for methodName, fn := range typ.funcs() {
-			env.AddNativeMethod(qualifier, methodName, fn)
-		}
-	}
-
-	nativePackages := map[string]quasigoNative{
-		`github.com/quasilyte/go-ruleguard/dsl/types`: dslTypesPackage{},
-	}
-
-	for qualifier, pkg := range nativePackages {
-		for funcName, fn := range pkg.funcs() {
-			env.AddNativeMethod(qualifier, funcName, fn)
-		}
-	}
-}
+func initEnv(state *engineState, env *quasigo.Env) { _ = "STUB: not implemented"; return }
 
 type quasigoNative interface {
 	funcs() map[string]func(*quasigo.ValueStack)
@@ -66,264 +32,140 @@ type quasigoNative interface {
 type dslTypesType struct{}
 
 func (native dslTypesType) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"Underlying": native.Underlying,
-		"String":     native.String,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (dslTypesType) Underlying(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(types.Type).Underlying())
-}
+func (dslTypesType) Underlying(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesType) String(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(types.Type).String())
-}
+func (dslTypesType) String(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 type dslTypesInterface struct{}
 
 func (native dslTypesInterface) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"Underlying": native.Underlying,
-		"String":     native.String,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (dslTypesInterface) Underlying(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Interface).Underlying())
-}
+func (dslTypesInterface) Underlying(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesInterface) String(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Interface).String())
-}
+func (dslTypesInterface) String(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 type dslTypesSlice struct{}
 
 func (native dslTypesSlice) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"Underlying": native.Underlying,
-		"String":     native.String,
-		"Elem":       native.Elem,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (dslTypesSlice) Underlying(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Slice).Underlying())
-}
+func (dslTypesSlice) Underlying(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesSlice) String(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Slice).String())
-}
+func (dslTypesSlice) String(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesSlice) Elem(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Slice).Elem())
-}
+func (dslTypesSlice) Elem(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 type dslTypesArray struct{}
 
 func (native dslTypesArray) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"Underlying": native.Underlying,
-		"String":     native.String,
-		"Elem":       native.Elem,
-		"Len":        native.Len,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (dslTypesArray) Underlying(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Array).Underlying())
-}
+func (dslTypesArray) Underlying(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesArray) String(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Array).String())
-}
+func (dslTypesArray) String(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesArray) Elem(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Array).Elem())
-}
+func (dslTypesArray) Elem(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesArray) Len(stack *quasigo.ValueStack) {
-	stack.PushInt(int(stack.Pop().(*types.Array).Len()))
-}
+func (dslTypesArray) Len(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 type dslTypesPointer struct{}
 
 func (native dslTypesPointer) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"Underlying": native.Underlying,
-		"String":     native.String,
-		"Elem":       native.Elem,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (dslTypesPointer) Underlying(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Pointer).Underlying())
-}
+func (dslTypesPointer) Underlying(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesPointer) String(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Pointer).String())
-}
+func (dslTypesPointer) String(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesPointer) Elem(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Pointer).Elem())
-}
+func (dslTypesPointer) Elem(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 type dslTypesStruct struct{}
 
 func (native dslTypesStruct) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"Underlying": native.Underlying,
-		"String":     native.String,
-		"NumFields":  native.NumFields,
-		"Field":      native.Field,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (dslTypesStruct) Underlying(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Struct).Underlying())
-}
+func (dslTypesStruct) Underlying(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesStruct) String(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Struct).String())
-}
+func (dslTypesStruct) String(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesStruct) NumFields(stack *quasigo.ValueStack) {
-	stack.PushInt(stack.Pop().(*types.Struct).NumFields())
-}
+func (dslTypesStruct) NumFields(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesStruct) Field(stack *quasigo.ValueStack) {
-	i := stack.PopInt()
-	typ := stack.Pop().(*types.Struct)
-	stack.Push(typ.Field(i))
-}
+func (dslTypesStruct) Field(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 type dslTypesPackage struct{}
 
 func (native dslTypesPackage) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"Implements":  native.Implements,
-		"Identical":   native.Identical,
-		"NewArray":    native.NewArray,
-		"NewSlice":    native.NewSlice,
-		"NewPointer":  native.NewPointer,
-		"AsArray":     native.AsArray,
-		"AsSlice":     native.AsSlice,
-		"AsPointer":   native.AsPointer,
-		"AsInterface": native.AsInterface,
-		"AsStruct":    native.AsStruct,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (dslTypesPackage) Implements(stack *quasigo.ValueStack) {
-	iface := stack.Pop().(*types.Interface)
-	typ := stack.Pop().(types.Type)
-	stack.Push(xtypes.Implements(typ, iface))
-}
+func (dslTypesPackage) Implements(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesPackage) Identical(stack *quasigo.ValueStack) {
-	y := stack.Pop().(types.Type)
-	x := stack.Pop().(types.Type)
-	stack.Push(xtypes.Identical(x, y))
-}
+func (dslTypesPackage) Identical(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesPackage) NewArray(stack *quasigo.ValueStack) {
-	length := stack.PopInt()
-	typ := stack.Pop().(types.Type)
-	stack.Push(types.NewArray(typ, int64(length)))
-}
+func (dslTypesPackage) NewArray(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesPackage) NewSlice(stack *quasigo.ValueStack) {
-	typ := stack.Pop().(types.Type)
-	stack.Push(types.NewSlice(typ))
-}
+func (dslTypesPackage) NewSlice(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesPackage) NewPointer(stack *quasigo.ValueStack) {
-	typ := stack.Pop().(types.Type)
-	stack.Push(types.NewPointer(typ))
-}
+func (dslTypesPackage) NewPointer(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesPackage) AsArray(stack *quasigo.ValueStack) {
-	typ, _ := stack.Pop().(types.Type).(*types.Array)
-	stack.Push(typ)
-}
+func (dslTypesPackage) AsArray(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesPackage) AsSlice(stack *quasigo.ValueStack) {
-	typ, _ := stack.Pop().(types.Type).(*types.Slice)
-	stack.Push(typ)
-}
+func (dslTypesPackage) AsSlice(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesPackage) AsPointer(stack *quasigo.ValueStack) {
-	typ, _ := stack.Pop().(types.Type).(*types.Pointer)
-	stack.Push(typ)
-}
+func (dslTypesPackage) AsPointer(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesPackage) AsInterface(stack *quasigo.ValueStack) {
-	typ, _ := stack.Pop().(types.Type).(*types.Interface)
-	stack.Push(typ)
-}
+func (dslTypesPackage) AsInterface(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesPackage) AsStruct(stack *quasigo.ValueStack) {
-	typ, _ := stack.Pop().(types.Type).(*types.Struct)
-	stack.Push(typ)
-}
+func (dslTypesPackage) AsStruct(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 type dslTypesVar struct{}
 
 func (native dslTypesVar) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"Embedded": native.Embedded,
-		"Type":     native.Type,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (dslTypesVar) Embedded(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Var).Embedded())
-}
+func (dslTypesVar) Embedded(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslTypesVar) Type(stack *quasigo.ValueStack) {
-	stack.Push(stack.Pop().(*types.Var).Type())
-}
+func (dslTypesVar) Type(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 type dslDoContext struct{}
 
 func (native dslDoContext) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"SetReport":  native.SetReport,
-		"SetSuggest": native.SetSuggest,
-		"Var":        native.Var,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (native dslDoContext) Var(stack *quasigo.ValueStack) {
-	s := stack.Pop().(string)
-	params := stack.Pop().(*filterParams)
-	stack.Push(&dslDoVarRepr{params: params, name: s})
-}
+func (native dslDoContext) Var(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (native dslDoContext) SetReport(stack *quasigo.ValueStack) {
-	s := stack.Pop().(string)
-	params := stack.Pop().(*filterParams)
-	params.reportString = s
-}
+func (native dslDoContext) SetReport(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (native dslDoContext) SetSuggest(stack *quasigo.ValueStack) {
-	s := stack.Pop().(string)
-	params := stack.Pop().(*filterParams)
-	params.suggestString = s
-}
+func (native dslDoContext) SetSuggest(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 type dslMatchedText struct{}
 
 func (native dslMatchedText) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"String": native.String,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (dslMatchedText) String(stack *quasigo.ValueStack) {
-	fmt.Printf("%T\n", stack.Pop())
-	stack.Push("ok2")
-}
+func (dslMatchedText) String(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 type dslDoVarRepr struct {
 	params *filterParams
@@ -333,69 +175,38 @@ type dslDoVarRepr struct {
 type dslDoVar struct{}
 
 func (native dslDoVar) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"Text": native.Text,
-		"Type": native.Type,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (dslDoVar) Text(stack *quasigo.ValueStack) {
-	v := stack.Pop().(*dslDoVarRepr)
-	params := v.params
-	stack.Push(params.nodeString(params.subNode(v.name)))
-}
+func (dslDoVar) Text(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func (dslDoVar) Type(stack *quasigo.ValueStack) {
-	v := stack.Pop().(*dslDoVarRepr)
-	params := v.params
-	stack.Push(params.typeofNode(params.subNode(v.name)))
-}
+func (dslDoVar) Type(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 type dslVarFilterContext struct {
 	state *engineState
 }
 
 func (native dslVarFilterContext) funcs() map[string]func(*quasigo.ValueStack) {
-	return map[string]func(*quasigo.ValueStack){
-		"Type":         native.Type,
-		"SizeOf":       native.SizeOf,
-		"GetType":      native.GetType,
-		"GetInterface": native.GetInterface,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (dslVarFilterContext) Type(stack *quasigo.ValueStack) {
-	params := stack.Pop().(*filterParams)
-	typ := params.typeofNode(params.subExpr(params.varname))
-	stack.Push(typ)
-}
+func (dslVarFilterContext) Type(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
 func (native dslVarFilterContext) SizeOf(stack *quasigo.ValueStack) {
-	typ := stack.Pop().(types.Type)
-	params := stack.Pop().(*filterParams)
-	stack.PushInt(int(params.ctx.Sizes.Sizeof(typ)))
+	_ = "STUB: not implemented"
+	return
 }
 
 func (native dslVarFilterContext) GetType(stack *quasigo.ValueStack) {
-	fqn := stack.Pop().(string)
-	params := stack.Pop().(*filterParams)
-	typ, err := native.state.FindType(params.importer, params.ctx.Pkg, fqn)
-	if err != nil {
-		panic(err)
-	}
-	stack.Push(typ)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (native dslVarFilterContext) GetInterface(stack *quasigo.ValueStack) {
-	fqn := stack.Pop().(string)
-	params := stack.Pop().(*filterParams)
-	typ, err := native.state.FindType(params.importer, params.ctx.Pkg, fqn)
-	if err != nil {
-		panic(err)
-	}
-	if ifaceType, ok := typ.Underlying().(*types.Interface); ok {
-		stack.Push(ifaceType)
-		return
-	}
-	stack.Push((*types.Interface)(nil)) // Not found or not an interface
+	_ = "STUB: not implemented"
+	return
 }
+
+// Not found or not an interface

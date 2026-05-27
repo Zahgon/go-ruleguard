@@ -1,17 +1,9 @@
 package qfmt
 
 import (
-	"fmt"
-
 	"github.com/quasilyte/go-ruleguard/ruleguard/quasigo"
 )
 
-func ImportAll(env *quasigo.Env) {
-	env.AddNativeFunc(`fmt`, `Sprintf`, Sprintf)
-}
+func ImportAll(env *quasigo.Env) { _ = "STUB: not implemented"; return }
 
-func Sprintf(stack *quasigo.ValueStack) {
-	args := stack.PopVariadic()
-	format := stack.Pop().(string)
-	stack.Push(fmt.Sprintf(format, args...))
-}
+func Sprintf(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }

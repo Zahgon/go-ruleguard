@@ -6,9 +6,7 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"go/format"
 	"log"
-	"os"
 	"strings"
 	"text/template"
 )
@@ -158,35 +156,6 @@ func main() {
 	writeFile("opcodes.gen.go", buf.Bytes())
 }
 
-func decodeEnc(enc string) encodingInfo {
-	fields := strings.Fields(enc)
-	width := 0
-	for _, f := range fields {
-		parts := strings.Split(f, ":")
-		var typ string
-		if len(parts) == 2 {
-			typ = parts[1]
-		} else {
-			typ = "u8"
-		}
-		switch typ {
-		case "i8", "u8":
-			width++
-		case "i16", "u16":
-			width += 2
-		default:
-			panic(fmt.Sprintf("unknown op argument type: %s", typ))
-		}
-	}
-	return encodingInfo{width: width, parts: len(fields)}
-}
+func decodeEnc(enc string) encodingInfo { _ = "STUB: not implemented"; return *new(encodingInfo) }
 
-func writeFile(filename string, data []byte) {
-	pretty, err := format.Source(data)
-	if err != nil {
-		log.Panicf("gofmt: %v", err)
-	}
-	if err := os.WriteFile(filename, pretty, 0666); err != nil {
-		log.Panicf("write %s: %v", filename, err)
-	}
-}
+func writeFile(filename string, data []byte) { _ = "STUB: not implemented"; return }

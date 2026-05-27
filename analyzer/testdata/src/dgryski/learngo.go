@@ -1,5 +1,8 @@
 // Source: https://learnxinyminutes.com/docs/go/
 
+//go:build (prod && ignore) || (dev && ignore) || test
+// +build prod,ignore dev,ignore test
+
 // Single line comment
 /* Multi-
 line comment */
@@ -8,7 +11,6 @@ line comment */
 and can be executed by go build -tags="foo bar" command.
 Build tags are placed before the package clause near or at the top of the file
 followed by a blank line or other line comments. */
-// +build prod, dev, test
 
 // A package clause starts every source file.
 // Main is a special name declaring an executable rather than a library.
@@ -47,7 +49,9 @@ func beyondHello() {
 	learnTypes()                            // < y minutes, learn more!
 }
 
-/* <- multiline comment
+/*
+	<- multiline comment
+
 Functions can have parameters and (multiple!) return values.
 Here `x`, `y` are the arguments and `sum`, `prod` is the signature (what's returned).
 Note that `x` and `sum` receive the type `int`.

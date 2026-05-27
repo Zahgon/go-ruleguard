@@ -1,10 +1,10 @@
+//go:build ignore
 // +build ignore
 
 package gorules
 
 import (
 	"github.com/quasilyte/go-ruleguard/dsl"
-	"github.com/quasilyte/go-ruleguard/dsl/types"
 	testrules "github.com/quasilyte/ruleguard-rules-test"
 	subtestrules "github.com/quasilyte/ruleguard-rules-test/sub2"
 )
@@ -15,18 +15,11 @@ func init() {
 }
 
 func isInterface(ctx *dsl.VarFilterContext) bool {
+	_ = "STUB: not implemented"
 	// Could be written as m["x"].Type.Underlying().Is(`interface{$*_}`) in DSL.
-	return types.AsInterface(ctx.Type.Underlying()) != nil
+	return false
 }
 
-func exprUnparen(m dsl.Matcher) {
-	m.Match(`$f($*_, ($x), $*_)`).
-		Report(`the parentheses around $x are superfluous`).
-		Suggest(`$f($x)`)
-}
+func exprUnparen(m dsl.Matcher) { _ = "STUB: not implemented"; return }
 
-func interfaceAddr(m dsl.Matcher) {
-	m.Match(`&$x`).
-		Where(m["x"].Filter(isInterface)).
-		Report(`taking address of interface-typed value`)
-}
+func interfaceAddr(m dsl.Matcher) { _ = "STUB: not implemented"; return }

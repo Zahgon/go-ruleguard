@@ -10,8 +10,4 @@ type funcDebugInfo struct {
 	localNames    []string
 }
 
-func newDebugInfo() *debugInfo {
-	return &debugInfo{
-		funcs: make(map[*Func]funcDebugInfo),
-	}
-}
+func newDebugInfo() *debugInfo { _ = "STUB: not implemented"; return nil }

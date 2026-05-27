@@ -1,62 +1,21 @@
 package qstrings
 
 import (
-	"strings"
-
 	"github.com/quasilyte/go-ruleguard/ruleguard/quasigo"
 )
 
-func ImportAll(env *quasigo.Env) {
-	env.AddNativeFunc(`strings`, `Replace`, Replace)
-	env.AddNativeFunc(`strings`, `ReplaceAll`, ReplaceAll)
-	env.AddNativeFunc(`strings`, `TrimPrefix`, TrimPrefix)
-	env.AddNativeFunc(`strings`, `TrimSuffix`, TrimSuffix)
-	env.AddNativeFunc(`strings`, `HasPrefix`, HasPrefix)
-	env.AddNativeFunc(`strings`, `HasSuffix`, HasSuffix)
-	env.AddNativeFunc(`strings`, `Contains`, Contains)
-}
+func ImportAll(env *quasigo.Env) { _ = "STUB: not implemented"; return }
 
-func Replace(stack *quasigo.ValueStack) {
-	n := stack.PopInt()
-	newPart := stack.Pop().(string)
-	oldPart := stack.Pop().(string)
-	s := stack.Pop().(string)
-	stack.Push(strings.Replace(s, oldPart, newPart, n))
-}
+func Replace(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func ReplaceAll(stack *quasigo.ValueStack) {
-	newPart := stack.Pop().(string)
-	oldPart := stack.Pop().(string)
-	s := stack.Pop().(string)
-	stack.Push(strings.ReplaceAll(s, oldPart, newPart))
-}
+func ReplaceAll(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func TrimPrefix(stack *quasigo.ValueStack) {
-	prefix := stack.Pop().(string)
-	s := stack.Pop().(string)
-	stack.Push(strings.TrimPrefix(s, prefix))
-}
+func TrimPrefix(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func TrimSuffix(stack *quasigo.ValueStack) {
-	prefix := stack.Pop().(string)
-	s := stack.Pop().(string)
-	stack.Push(strings.TrimSuffix(s, prefix))
-}
+func TrimSuffix(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func HasPrefix(stack *quasigo.ValueStack) {
-	prefix := stack.Pop().(string)
-	s := stack.Pop().(string)
-	stack.Push(strings.HasPrefix(s, prefix))
-}
+func HasPrefix(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func HasSuffix(stack *quasigo.ValueStack) {
-	suffix := stack.Pop().(string)
-	s := stack.Pop().(string)
-	stack.Push(strings.HasSuffix(s, suffix))
-}
+func HasSuffix(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }
 
-func Contains(stack *quasigo.ValueStack) {
-	substr := stack.Pop().(string)
-	s := stack.Pop().(string)
-	stack.Push(strings.Contains(s, substr))
-}
+func Contains(stack *quasigo.ValueStack) { _ = "STUB: not implemented"; return }

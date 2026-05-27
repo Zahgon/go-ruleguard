@@ -1,49 +1,25 @@
 package ruleguard
 
 import (
-	"fmt"
 	"go/ast"
-	"strings"
 )
 
 type nodePath struct {
 	stack []ast.Node
 }
 
-func newNodePath() *nodePath {
-	return &nodePath{stack: make([]ast.Node, 0, 32)}
-}
+func newNodePath() *nodePath { _ = "STUB: not implemented"; return nil }
 
-func (p nodePath) String() string {
-	parts := make([]string, len(p.stack))
-	for i, n := range p.stack {
-		parts[i] = fmt.Sprintf("%T", n)
-	}
-	return strings.Join(parts, "/")
-}
+func (p nodePath) String() string { _ = "STUB: not implemented"; return "" }
 
-func (p *nodePath) Parent() ast.Node {
-	return p.NthParent(1)
-}
+func (p *nodePath) Parent() ast.Node { _ = "STUB: not implemented"; return *new(ast.Node) }
 
-func (p *nodePath) Current() ast.Node {
-	return p.NthParent(0)
-}
+func (p *nodePath) Current() ast.Node { _ = "STUB: not implemented"; return *new(ast.Node) }
 
-func (p *nodePath) NthParent(n int) ast.Node {
-	index := uint(len(p.stack) - n - 1)
-	if index < uint(len(p.stack)) {
-		return p.stack[index]
-	}
-	return nil
-}
+func (p *nodePath) NthParent(n int) ast.Node { _ = "STUB: not implemented"; return *new(ast.Node) }
 
-func (p *nodePath) Len() int { return len(p.stack) }
+func (p *nodePath) Len() int { _ = "STUB: not implemented"; return 0 }
 
-func (p *nodePath) Push(n ast.Node) {
-	p.stack = append(p.stack, n)
-}
+func (p *nodePath) Push(n ast.Node) { _ = "STUB: not implemented"; return }
 
-func (p *nodePath) Pop() {
-	p.stack = p.stack[:len(p.stack)-1]
-}
+func (p *nodePath) Pop() { _ = "STUB: not implemented"; return }

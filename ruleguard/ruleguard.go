@@ -38,13 +38,9 @@ type Engine struct {
 }
 
 // NewEngine creates an engine with empty rule set.
-func NewEngine() *Engine {
-	return &Engine{impl: newEngine()}
-}
+func NewEngine() *Engine { _ = "STUB: not implemented"; return nil }
 
-func (e *Engine) InferBuildContext() {
-	e.BuildContext = inferBuildContext()
-}
+func (e *Engine) InferBuildContext() { _ = "STUB: not implemented"; return }
 
 // Load reads a ruleguard file from r and adds it to the engine rule set.
 //
@@ -52,7 +48,8 @@ func (e *Engine) InferBuildContext() {
 // It's advised to Load() all ruleguard files under a critical section (like sync.Once)
 // and then use Run() to execute all of them.
 func (e *Engine) Load(ctx *LoadContext, filename string, r io.Reader) error {
-	return e.impl.Load(ctx, e.BuildContext, filename, r)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // LoadFromIR is like Load(), but it takes already parsed IR file as an input.
@@ -60,22 +57,19 @@ func (e *Engine) Load(ctx *LoadContext, filename string, r io.Reader) error {
 // This method can be useful if you're trying to embed a precompiled rules file
 // into your binary.
 func (e *Engine) LoadFromIR(ctx *LoadContext, filename string, f *ir.File) error {
-	return e.impl.LoadFromIR(ctx, e.BuildContext, filename, f)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // LoadedGroups returns information about all currently loaded rule groups.
-func (e *Engine) LoadedGroups() []GoRuleGroup {
-	return e.impl.LoadedGroups()
-}
+func (e *Engine) LoadedGroups() []GoRuleGroup { _ = "STUB: not implemented"; return nil }
 
 // Run executes all loaded rules on a given file.
 // Matched rules invoke `RunContext.Report()` method.
 //
 // Run() is thread-safe, unless used in parallel with Load(),
 // which modifies the engine state.
-func (e *Engine) Run(ctx *RunContext, f *ast.File) error {
-	return e.impl.Run(ctx, e.BuildContext, f)
-}
+func (e *Engine) Run(ctx *RunContext, f *ast.File) error { _ = "STUB: not implemented"; return nil }
 
 type LoadContext struct {
 	DebugFunc    string
@@ -102,9 +96,7 @@ type RunnerState struct {
 }
 
 // NewRunnerState creates a state object that can be used with RunContext.
-func NewRunnerState(e *Engine) *RunnerState {
-	return newRunnerState(e.impl.state)
-}
+func NewRunnerState(e *Engine) *RunnerState { _ = "STUB: not implemented"; return nil }
 
 type RunContext struct {
 	Debug        string
@@ -217,5 +209,5 @@ type ImportError struct {
 	err error
 }
 
-func (e *ImportError) Error() string { return e.msg }
-func (e *ImportError) Unwrap() error { return e.err }
+func (e *ImportError) Error() string { _ = "STUB: not implemented"; return "" }
+func (e *ImportError) Unwrap() error { _ = "STUB: not implemented"; return nil }

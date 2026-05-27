@@ -1,11 +1,5 @@
 package textmatch
 
-import (
-	"bytes"
-	"strings"
-	"unicode/utf8"
-)
-
 // inputValue is a wrapper for string|[]byte.
 //
 // We hold both values to avoid string->[]byte and vice versa
@@ -15,58 +9,37 @@ type inputValue struct {
 	b []byte
 }
 
-func newInputValue(s string) inputValue {
-	return inputValue{s: s, b: []byte(s)}
-}
+func newInputValue(s string) inputValue { _ = "STUB: not implemented"; return *new(inputValue) }
 
 type containsLiteralMatcher struct{ value inputValue }
 
 func (m *containsLiteralMatcher) MatchString(s string) bool {
-	return strings.Contains(s, m.value.s)
+	_ = "STUB: not implemented"
+	return false
 }
 
-func (m *containsLiteralMatcher) Match(b []byte) bool {
-	return bytes.Contains(b, m.value.b)
-}
+func (m *containsLiteralMatcher) Match(b []byte) bool { _ = "STUB: not implemented"; return false }
 
 type prefixLiteralMatcher struct{ value inputValue }
 
-func (m *prefixLiteralMatcher) MatchString(s string) bool {
-	return strings.HasPrefix(s, m.value.s)
-}
+func (m *prefixLiteralMatcher) MatchString(s string) bool { _ = "STUB: not implemented"; return false }
 
-func (m *prefixLiteralMatcher) Match(b []byte) bool {
-	return bytes.HasPrefix(b, m.value.b)
-}
+func (m *prefixLiteralMatcher) Match(b []byte) bool { _ = "STUB: not implemented"; return false }
 
 type suffixLiteralMatcher struct{ value inputValue }
 
-func (m *suffixLiteralMatcher) MatchString(s string) bool {
-	return strings.HasSuffix(s, m.value.s)
-}
+func (m *suffixLiteralMatcher) MatchString(s string) bool { _ = "STUB: not implemented"; return false }
 
-func (m *suffixLiteralMatcher) Match(b []byte) bool {
-	return bytes.HasSuffix(b, m.value.b)
-}
+func (m *suffixLiteralMatcher) Match(b []byte) bool { _ = "STUB: not implemented"; return false }
 
 type eqLiteralMatcher struct{ value inputValue }
 
-func (m *eqLiteralMatcher) MatchString(s string) bool {
-	return m.value.s == s
-}
+func (m *eqLiteralMatcher) MatchString(s string) bool { _ = "STUB: not implemented"; return false }
 
-func (m *eqLiteralMatcher) Match(b []byte) bool {
-	return bytes.Equal(m.value.b, b)
-}
+func (m *eqLiteralMatcher) Match(b []byte) bool { _ = "STUB: not implemented"; return false }
 
 type prefixRunePredMatcher struct{ pred func(rune) bool }
 
-func (m *prefixRunePredMatcher) MatchString(s string) bool {
-	r, _ := utf8.DecodeRuneInString(s)
-	return m.pred(r)
-}
+func (m *prefixRunePredMatcher) MatchString(s string) bool { _ = "STUB: not implemented"; return false }
 
-func (m *prefixRunePredMatcher) Match(b []byte) bool {
-	r, _ := utf8.DecodeRune(b)
-	return m.pred(r)
-}
+func (m *prefixRunePredMatcher) Match(b []byte) bool { _ = "STUB: not implemented"; return false }

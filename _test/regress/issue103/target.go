@@ -7,7 +7,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func testLoggerType(x interface{}) {}
+func testLoggerType(x interface{}) { _ = "STUB: not implemented"; return }
 
 func main() {
 	logger := logrus.New()

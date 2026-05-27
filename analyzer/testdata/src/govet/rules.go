@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package gorules
@@ -16,7 +17,7 @@ func shiftOverflow(m dsl.Matcher) {
 	m.Match(`$x << $n`).
 		Where(!m["x"].Const && m["x"].Type.Size == 4 && m["n"].Value.Int() >= 32 && !m.Deadcode()).
 		Report(`$x (32 bits) too small for shift of $n`)
-	
+
 	m.Match(`$x << $n`).
 		Where(!m["x"].Const && m["x"].Type.Size == 8 && m["n"].Value.Int() >= 64 && !m.Deadcode()).
 		Report(`$x (64 bits) too small for shift of $n`)

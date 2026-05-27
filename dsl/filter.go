@@ -13,12 +13,23 @@ type VarFilterContext struct {
 
 // SizeOf returns the size of the given type.
 // It uses the ruleguard.Context.Sizes to calculate the result.
-func (*VarFilterContext) SizeOf(x types.Type) int { return 0 }
+func (*VarFilterContext) SizeOf(x types.Type) int {
+	_ = "STUB: not implemented"
 
-// GetType finds a type value by a given name.
-// If a type can't be found (or a name is malformed), this function panics.
-func (*VarFilterContext) GetType(name typeName) types.Type { return nil }
+	// GetType finds a type value by a given name.
+	// If a type can't be found (or a name is malformed), this function panics.
+	return 0
+}
 
-// GetInterface finds a type value that represents an interface by a given name.
-// Works like `types.AsInterface(ctx.GetType(name))`.
-func (*VarFilterContext) GetInterface(name typeName) *types.Interface { return nil }
+func (*VarFilterContext) GetType(name typeName) types.Type {
+	_ = "STUB: not implemented"
+
+	// GetInterface finds a type value that represents an interface by a given name.
+	// Works like `types.AsInterface(ctx.GetType(name))`.
+	return *new(types.Type)
+}
+
+func (*VarFilterContext) GetInterface(name typeName) *types.Interface {
+	_ = "STUB: not implemented"
+	return nil
+}

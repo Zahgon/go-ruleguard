@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/go-ruleguard/rg1"
 	"go.uber.org/zap"
 )
@@ -13,13 +11,9 @@ type Foo struct {
 type Bar struct {
 }
 
-func (f *Foo) String() string {
-	return "foo"
-}
+func (f *Foo) String() string { _ = "STUB: not implemented"; return "" }
 
-func (f *Bar) Run() {
-	fmt.Printf("Running\n")
-}
+func (f *Bar) Run() { _ = "STUB: not implemented"; return }
 
 func main() {
 	logger, _ := zap.NewProduction()

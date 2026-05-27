@@ -16,4 +16,4 @@ type Bundle struct {
 // This is not a fundamental limitation but rather a precaution
 // measure before we understand how it should work better.
 // If you need this feature, please open an issue at github.com/quasilyte/go-ruleguard.
-func ImportRules(prefix string, bundle Bundle) {}
+func ImportRules(prefix string, bundle Bundle) { _ = "STUB: not implemented"; return }

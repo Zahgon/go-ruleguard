@@ -9,8 +9,6 @@ import (
 
 const LabelsEnabled = false
 
-func EnterWithLabels(origContext context.Context, name string) {
-}
+func EnterWithLabels(origContext context.Context, name string) { _ = "STUB: not implemented"; return }
 
-func Leave(origContext context.Context) {
-}
+func Leave(origContext context.Context) { _ = "STUB: not implemented"; return }

@@ -10,10 +10,11 @@ type matchData struct {
 	match gogrep.MatchData
 }
 
-func (m matchData) Node() ast.Node { return m.match.Node }
+func (m matchData) Node() ast.Node { _ = "STUB: not implemented"; return *new(ast.Node) }
 
-func (m matchData) CaptureList() []gogrep.CapturedNode { return m.match.Capture }
+func (m matchData) CaptureList() []gogrep.CapturedNode { _ = "STUB: not implemented"; return nil }
 
 func (m matchData) CapturedByName(name string) (ast.Node, bool) {
-	return m.match.CapturedByName(name)
+	_ = "STUB: not implemented"
+	return *new(ast.Node), false
 }

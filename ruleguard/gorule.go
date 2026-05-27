@@ -1,7 +1,6 @@
 package ruleguard
 
 import (
-	"fmt"
 	"go/ast"
 	"go/types"
 	"regexp"
@@ -43,9 +42,9 @@ type goRule struct {
 
 type matchFilterResult string
 
-func (s matchFilterResult) Matched() bool { return s == "" }
+func (s matchFilterResult) Matched() bool { _ = "STUB: not implemented"; return false }
 
-func (s matchFilterResult) RejectReason() string { return string(s) }
+func (s matchFilterResult) RejectReason() string { _ = "STUB: not implemented"; return "" }
 
 type filterFunc func(*filterParams) matchFilterResult
 
@@ -83,72 +82,28 @@ type filterParams struct {
 }
 
 func (params *filterParams) subNode(name string) ast.Node {
-	n, _ := params.match.CapturedByName(name)
-	return n
+	_ = "STUB: not implemented"
+	return *new(ast.Node)
 }
 
 func (params *filterParams) subExpr(name string) ast.Expr {
-	n, _ := params.match.CapturedByName(name)
-	switch n := n.(type) {
-	case ast.Expr:
-		return n
-	case *ast.ExprStmt:
-		return n.X
-	default:
-		return nil
-	}
+	_ = "STUB: not implemented"
+	return *new(ast.Expr)
 }
 
 func (params *filterParams) typeofNode(n ast.Node) types.Type {
-	var e ast.Expr
-	switch n := n.(type) {
-	case ast.Expr:
-		e = n
-	case *ast.Field:
-		e = n.Type
-	}
-	if typ := params.ctx.Types.TypeOf(e); typ != nil {
-		return typ
-	}
-	return invalidType
+	_ = "STUB: not implemented"
+	return *new(types.Type)
 }
 
 func mergeRuleSets(toMerge []*goRuleSet) (*goRuleSet, error) {
-	out := &goRuleSet{
-		universal: &scopedGoRuleSet{},
-		groups:    make(map[string]*GoRuleGroup),
-	}
-
-	for _, x := range toMerge {
-		out.universal = appendScopedRuleSet(out.universal, x.universal)
-		for groupName, group := range x.groups {
-			if prevGroup, ok := out.groups[groupName]; ok {
-				newRef := fmt.Sprintf("%s:%d", group.Filename, group.Line)
-				oldRef := fmt.Sprintf("%s:%d", prevGroup.Filename, prevGroup.Line)
-				return nil, fmt.Errorf("%s: redefinition of %s(), previously defined at %s", newRef, groupName, oldRef)
-			}
-			out.groups[groupName] = group
-		}
-	}
-
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func appendScopedRuleSet(dst, src *scopedGoRuleSet) *scopedGoRuleSet {
-	for tag, rules := range src.rulesByTag {
-		dst.rulesByTag[tag] = append(dst.rulesByTag[tag], cloneRuleSlice(rules)...)
-		dst.categorizedNum += len(rules)
-	}
-	dst.commentRules = append(dst.commentRules, src.commentRules...)
-	return dst
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func cloneRuleSlice(slice []goRule) []goRule {
-	out := make([]goRule, len(slice))
-	for i, rule := range slice {
-		clone := rule
-		clone.pat = rule.pat.Clone()
-		out[i] = clone
-	}
-	return out
-}
+func cloneRuleSlice(slice []goRule) []goRule { _ = "STUB: not implemented"; return nil }
